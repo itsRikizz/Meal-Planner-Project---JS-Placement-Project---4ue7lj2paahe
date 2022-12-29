@@ -1,0 +1,25 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 40px 40px 0 40px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav img:first-child {
+  height: 30px;
+}
+.nav-items {
+  display: flex;
+  margin-left: 80px;
+}
+.nav-item {
+  margin: 0 30px;
+  font-size: 17px;
+  cursor: pointer;
+}
+nav img:last-child {
+  height: 35px;
+}
