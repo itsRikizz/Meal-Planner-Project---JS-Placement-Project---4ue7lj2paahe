@@ -66,46 +66,67 @@ form {
 }
 .form input {
   border-radius: 9px;
+  padding: 10px;
+  padding-right: 10px;
 }
 .meal-plan {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  /* display: flex; */
+  /* justify-content: space-around; */
+  /* align-items: center; */
+  /* border-radius: 5px; */
   /* justify-content: center; */
   /* align-items: center; */
 }
 .meal-card {
-  width: 30%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 9px;
 }
-.meal-image {
-  /* width: 100%; */
-  height: 150px;
-  overflow: hidden;
-  border-radius: 10px;
-}
-.meal-image img {
+
+.meal-cards img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* border-radius: 10px; */
+  height: 200px;
+  border-radius: 10px;
 }
-.meal-details {
-  padding: 20px;
+.meal-card h1 {
+  margin: 10px 0;
+  font-size: 24px;
+  text-align: center;
 }
-.meal-name {
-  margin: 0;
-}
-.calories {
-  color: #999;
-  font-size: 0.8em;
+.meal-card p {
   margin: 5px 0;
+  font-size: 16px;
+}
+
+.meal-cards {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* animation: slide-in 0.5s ;
+  animation-fill-mode: forwards;
+  opacity: 0; */
+  animation: flip-in 0.9s ease-in-out;
+  opacity: 1;
+  /* backface-visibility: show; */
+}
+.meal-card button {
+  margin: 10px 10px 10px 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4c82af;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.meal-card button:hover {
+  background-color: #6be494;
 }
 .get-recipe {
   display: block;
@@ -146,4 +167,40 @@ form {
   padding: 10px;
   /* text-align: center; */
   list-style-type: none;
+}
+button {
+  cursor: pointer;
+  padding: 4px;
+  width: 150px;
+  border-radius: 7px;
+  border-color: #4c82af;
+}
+#gender {
+  padding: 4px;
+  width: 150px;
+  border-radius: 7px;
+  border-color: #4c82af;
+}
+#activity {
+  padding: 4px;
+  width: 150px;
+  border-radius: 7px;
+  border-color: #4c82af;
+}
+/* @keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+} */
+@keyframes flip-in {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0);
+  }
 }

@@ -1,12 +1,177 @@
-var requestOptions = {
-  method: "GET",
-  redirect: "follow",
-};
+// Selectors
+const weight = document.querySelector("#weight");
+const height = document.querySelector("#height");
+const age = document.querySelector("#age");
+const genderSelect = document.querySelector("#gender");
+const activitySelect = document.querySelector("#activity");
+const GenerateMeal = document.querySelector("#formSubmit");
 
-fetch(
-  "https://api.spoonacular.com/recipes/findByNutrients?minAlcohol=0&maxSaturatedFat=100&minVitaminA=0&maxVitaminA=100&minVitaminC=0&maxVitaminC=100&minVitaminD=0&maxVitaminD=100&minVitaminE=0&maxVitaminE=100&minVitaminK=0&maxVitaminK=100&minVitaminB1=0&maxVitaminB1=100&minVitaminB2=0&maxVitaminB2=100&minVitaminB5=0&maxVitaminB5=100&minVitaminB3=0&maxVitaminB3=100&minVitaminB6=0&maxVitaminB6=100&minVitaminB12=0&maxVitaminB12=100&minFiber=0&maxFiber=100&minFolate=0&maxFolate=100&minFolicAcid=0&maxFolicAcid=100&minIodine=0&maxIodine=100&minIron=0&maxIron=100&minMagnesium=0&maxMagnesium=100&minManganese=0&maxManganese=100&minPhosphorus=0&maxPhosphorus=100&minPotassium=0&maxPotassium=100&minSelenium=0&maxSelenium=100&minSodium=0&maxSodium=100&minSugar=0&maxSugar=100&minZinc=0&maxZinc=100&offset=606&number=10&apiKey=836dc3426b2441d4a1478db02c298865",
-  requestOptions
-)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.log("error", error));
+// Female BMR
+
+function calculateFemaleBMR(weight, height, age) {
+  if (!weight || !height || !age) {
+    return "";
+  }
+  const bmr = 655.1 + 9.563 * weight + 1.85 * height - 4.676 * age;
+  return bmr;
+}
+
+//Male BMR
+
+function calculateMaleBMR(weight, height, age) {
+  if (!weight || !height || !age) {
+    return "";
+  }
+  const bmr = 66.47 + 13.75 * weight + 5.003 * height - 6.755 * age;
+  return bmr;
+}
+
+// calculate BMR
+
+function calculateCalories(BMR, activityValue) {
+  const calories = BMR * activityValue;
+  console.log("calories" + calories);
+}
+
+// on generate meal
+GenerateMeal.addEventListener("click", (event) => {
+  const Femalebmr = Math.floor(
+    calculateFemaleBMR(weight.value, height.value, age.value)
+  );
+  const Malebmr = Math.floor(
+    calculateMaleBMR(weight.value, height.value, age.value)
+  );
+  const genderValue = genderSelect.options[genderSelect.selectedIndex].value;
+  const activityValue =
+    activitySelect.options[activitySelect.selectedIndex].value;
+
+  if (genderValue === "male") {
+    console.log("male" + Malebmr);
+  } else if (genderValue === "female") {
+    console.log("female" + Femalebmr);
+  }
+
+  if (activityValue === "light") {
+    console.log(activityValue);
+    //
+  } else if (activityValue === "moderate") {
+    console.log(activityValue);
+  } else if (activityValue === "active") {
+    console.log(activityValue);
+  }
+  let BMR = 0;
+  if (genderValue === "male") {
+    BMR = Malebmr;
+  } else if (genderValue === "female") {
+    BMR = Femalebmr;
+  }
+
+  if (activityValue === "light") {
+    calculateCalories(BMR, 1.375);
+  } else if (activityValue === "moderate") {
+    calculateCalories(BMR, 1.55);
+  } else if (activityValue === "active") {
+    calculateCalories(BMR * 1.725);
+  }
+
+  event.preventDefault();
+});
+
+//................................................//
+
+const card = document.querySelector("#meal-container");
+const generateButton = document.querySelector("#formSubmit");
+card.classList.add("meal-card");
+
+function generateMealPlan() {
+  while (card.firstChild) {
+    card.removeChild(card.firstChild);
+  }
+  // Define data for each meal
+  const meals = [
+    {
+      image:
+        "https://img.freepik.com/free-photo/traditional-indian-soup-lentils-indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table_2829-18717.jpg?w=740&t=st=1672508714~exp=1672509314~hmac=89f318c0f4b23e4b1b78ae5e67edcea1879b9853ac130e733681b2b3e3d826f7",
+      name: "Breakfast",
+      calories: 400,
+      description: "Scrambled eggs with toast and fruit",
+      ingredients: ["2 eggs", "2 slices of bread", "1 banana"],
+      recipe:
+        "Heat a pan over medium heat. Beat the eggs in a small bowl and season with salt and pepper. Add the eggs to the pan and scramble until cooked. Toast the bread and slice the banana. Serve the eggs with the toast and sliced banana.",
+    },
+    {
+      name: "Lunch",
+      image:
+        "https://img.freepik.com/free-photo/traditional-indian-soup-lentils-indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table_2829-18717.jpg?w=740&t=st=1672508714~exp=1672509314~hmac=89f318c0f4b23e4b1b78ae5e67edcea1879b9853ac130e733681b2b3e3d826f7",
+      calories: 600,
+      description: "Grilled chicken salad",
+      ingredients: [
+        "4 oz grilled chicken",
+        "2 cups mixed greens",
+        "1/2 cup cherry tomatoes",
+        "1/4 cup crumbled feta cheese",
+      ],
+      recipe:
+        "Preheat the grill to medium-high heat. Season the chicken with your choice of spices and grill for 4-5 minutes per side or until fully cooked. In a large bowl, combine the mixed greens, cherry tomatoes, and crumbled feta cheese. Top the salad with the grilled chicken and serve.",
+    },
+    {
+      name: "Dinner",
+      image:
+        "https://img.freepik.com/free-photo/traditional-indian-soup-lentils-indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table_2829-18717.jpg?w=740&t=st=1672508714~exp=1672509314~hmac=89f318c0f4b23e4b1b78ae5e67edcea1879b9853ac130e733681b2b3e3d826f7",
+      calories: 800,
+      description: "Beef stir fry",
+      ingredients: [
+        "1 lb sirloin steak",
+        "1 cup broccoli florets",
+        "1 cup sliced bell peppers",
+        "1/2 cup sliced onions",
+        "2 cloves garlic",
+      ],
+      recipe:
+        "Cut the steak into thin slices. Heat a large pan or wok over high heat and add the steak, broccoli, bell peppers, onions, and garlic. Stir fry for 5-7 minutes or until the vegetables are tender and the steak is cooked to your desired level of doneness. Serve over rice or noodles.",
+    },
+  ];
+
+  // Generate meal cards for each meal
+  const mealCards = meals.map((meal) => createMealCard(meal));
+
+  // Append meal cards to the DOM
+  const mealContainer = document.getElementById("meal-container");
+  mealCards.forEach((card) => mealContainer.appendChild(card));
+
+  generateButton.disabled = true;
+  generateButton.textContent = "Meal Plan Generated";
+}
+function createMealCard(meal) {
+  // Create elements for the meal card
+  const card = document.createElement("div");
+  card.classList.add("meal-cards");
+  const image = document.createElement("img");
+  const heading = document.createElement("h1");
+  // const desc = document.createElement("p");
+  const calorieInfo = document.createElement("p");
+  // const ingredientList = document.createElement("ul");
+  const recipeButton = document.createElement("button");
+
+  // Add content to the elements
+  image.src = meal.image;
+  heading.textContent = meal.name;
+  // desc.textContent = meal.description;
+  calorieInfo.textContent = `Calories: ${meal.calories}`;
+  // meal.ingredients.forEach((ingredient) => {
+  //   const listItem = document.createElement("li");
+  //   listItem.textContent = ingredient;
+  //   ingredientList.appendChild(listItem);
+  // });
+  recipeButton.textContent = "View Recipe";
+  recipeButton.onclick = () => alert(meal.recipe);
+
+  // Append elements to the card
+
+  card.appendChild(image).classList.add("card-images");
+  card.appendChild(heading);
+  card.appendChild(calorieInfo);
+  card.appendChild(recipeButton).classList.add("btn");
+
+  return card;
+}
