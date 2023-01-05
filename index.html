@@ -4,127 +4,103 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Meal-Planner</title>
-  </head>
-  <body>
-    <nav class="navigation">
-      <img src="./images/logo.svg" alt="logo" />
-      <div class="nav-items">
-        <h5 class="nav-item active-item">Home</h5>
-        <h5 class="nav-item">Recipies</h5>
-        <h5 class="nav-item">Contact Us</h5>
-        <h5 class="nav-item">About</h5>
-      </div>
-      <img src="./images/actions.svg" alt="actions" />
-    </nav>
-    <section class="formsection">
-      <form class="form">
-        <div class="basic">
-          <input type="text" id="weight" name="weight" placeholder="Weight" />
-          <input type="text" id="height" name="height" placeholder="Height" />
-          <input type="text" id="age" name="age" placeholder="Age" />
-        </div>
-        <div class="secondary">
-          <select id="gender" name="gender">
-            <option value="" disabled selected>Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
+    <!-- < -->
 
-          <select id="activity" name="activity">
-            <option value="" disabled selected>Activity</option>
-            <option value="light">Light</option>
-            <option value="moderate">Moderate</option>
-            <option value="active">Active</option>
-          </select>
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Meal Planner</title>
+  </head>
+
+  <body>
+    <nav
+      class="navbar"
+      style="background-color: rgba(128, 255, 0, 0.521); color: black"
+    >
+      <div class="container">
+        <a class="navbar-brand">
+          <img src="./icons8-restaurant-16.png" width="70" height="60" />
+          <h3>
+            <span class="Heading">MEAL PLANNER</span>
+          </h3>
+        </a>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="formclass">
+        <div class="basic">
+          <div class="heightclass">
+            <div class="height">
+              <label for="height" class="height">Height</label>
+              <input
+                type="number"
+                class="form-control"
+                id="height"
+                placeholder="Enter Height (in cm)"
+              />
+            </div>
+          </div>
+          <div class="weightclass">
+            <div class="weightdiv">
+              <label for="weight" class="height">Weight</label>
+              <input
+                type="number"
+                class="form-control"
+                id="weight"
+                placeholder="Enter Weight (in kg)"
+              />
+            </div>
+          </div>
+          <div class="ageclass">
+            <div class="age">
+              <label for="age" class="form-label">Age</label>
+              <input
+                type="number"
+                class="form-control"
+                id="age"
+                placeholder="Enter Age"
+              />
+            </div>
+          </div>
         </div>
-        <div class="btn">
-          <button id="formSubmit" onclick="generateMealPlan()">
-            Generate Meal
+        <div class="options">
+          <div class="genderclass">
+            <label for="gender" class="gender">Gender</label>
+            <select class="form-select" id="gender">
+              <option selected value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="activityclass">
+            <label for="activity" class="activity">Activity Level</label>
+            <select class="form-select" id="activity">
+              <option selected value="light">Light</option>
+              <option value="moderate">Moderate</option>
+              <option value="active">Active</option>
+            </select>
+          </div>
+        </div>
+        <div class="btndiv">
+          <button type="submit" class="btn" id="submitBtn">
+            Generate Meals
           </button>
         </div>
-      </form>
-      <!-- <div class="btn">
-        <button id="formSubmit">Generate Meal</button>
-      </div> -->
-    </section>
-
-    <div id="meal-container"></div>
-
-    <!-- <section class="meal-plan">
-      <div class="meal-card">
-        <div class="meal-image">
-          <img
-            src="https://www.allrecipes.com/thmb/JW7y-R0VX7FG37f44rOp-kUiMlU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/4994311-egg-in-a-hole-Kevin-Rising-4x3-1-2000-ca8c9fcd53fe40cf904af74028e8f04f.jpg"
-            alt="breakfast"
-          />
-        </div>
-        <div class="meal-details">
-          <h3 class="meal-name">Breakfast</h3>
-          <p class="calories">300 calories</p>
-        </div>
-        <button class="get-recipe">GET RECIPE</button>
       </div>
-      <div class="meal-card">
-        <div class="meal-image">
-          <img
-            src="https://images.unsplash.com/photo-1539136788836-5699e78bfc75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-            alt="lunch"
-          />
-        </div>
-        <div class="meal-details">
-          <h3 class="meal-name">Lunch</h3>
-          <p class="calories">400 calories</p>
-        </div>
-        <button class="get-recipe">GET RECIPE</button>
+      <div class="rc1">
+        <div id="loader" style="display: none"></div>
+        <div class="text-center" id="details"></div>
+        <div class="row1" id="cards-container"></div>
       </div>
-      <div class="meal-card">
-        <div class="meal-image">
-          <img
-            src="https://media.istockphoto.com/id/682923236/photo/grilled-chicken-breast-with-potatoes-and-vegetables-salad.jpg?b=1&s=170667a&w=0&k=20&c=UPDPDVku1ysTkGgQL4IjyOHJH7x0fYpiTuGuPXt4NUM="
-            alt="Dinner"
-          />
+      <div class="rc2">
+        <h1 id="recipe-section" class="text-center"></h1>
+        <div class="row2">
+          <div class="recipes" id="ingredients"></div>
+          <div class="recipes" id="steps"></div>
+          <div class="recipes" id="equipment"></div>
         </div>
-        <div class="meal-details">
-          <h3 class="meal-name">Dinner</h3>
-          <p class="calories">500 calories</p>
-        </div>
-        <button class="get-recipe">GET RECIPE</button>
       </div>
-    </section>
-    <div class="recipeDiv">
-      <section class="recipes">
-        <div class="IngredientsSection">
-          <h3 class="heading">Ingredients</h3>
-          <ul class="Equipm">
-            <li>Flour</li>
-            <li>Granulated Sugar</li>
-            <li>Fresh Lemon Juice</li>
-          </ul>
-        </div>
-        <div class="stepsSection">
-          <h3 class="heading">steps</h3>
-          <ul class="Equipm">
-            <li>2 tbsp</li>
-            <li>2 tbsp</li>
-            <li>2 tbsp</li>
-          </ul>
-        </div>
-        <div class="EquipmentSection">
-          <h3 class="heading">Equipment</h3>
-          <ul class="Equipm">
-            <li>2 tbsp</li>
-            <li>2 tbsp</li>
-            <li>2 tbsp</li>
-          </ul>
-        </div>
-      </section>
-    </div> -->
-
-    <footer class="footerClass">
-      <h3>this is a footer</h3>
-    </footer>
-    <script src="app.js"></script>
+    </div>
+    <div class="footer">
+      <h3>Made by Sanmay</h3>
+    </div>
+    <script src="./App.js"></script>
   </body>
 </html>

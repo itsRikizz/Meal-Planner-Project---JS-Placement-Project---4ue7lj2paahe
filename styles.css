@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f9f9f9;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar-brand {
+  display: flex;
+  cursor: pointer;
+  margin-left: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.navbar-brand img {
+  gap: 200px;
+}
+.Heading {
+  color: rgb(8, 7, 7);
+
+  /* float: left; */
+}
+.container .carddesign {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+.formclass {
+  gap: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  margin: 20px;
+}
+
+ol li {
+  margin: 10px;
+}
+
+ul li::before {
+  content: "\2022";
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1.3em;
+}
+.formclass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.formclass .basic {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+.form-control {
+  border-radius: 10px;
+  padding: 10px;
+}
+input:hover {
+  border: 2px solid chocolate;
+}
+select:hover {
+  border: 2px solid chocolate;
+}
+
+.form-select {
+  border-radius: 10px;
+  padding: 5px;
+}
+.options {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 9px;
+  text-align: center;
+  background-color: #fc6e51;
+  color: white;
+  font-weight: lighter;
+}
+
+.btn:hover {
+  color: white;
+  transition: 0.3s;
+}
+
+.btn:active {
+  background-color: purple;
+}
+
+.card-btn {
+  background-color: #fc6e51;
+  border: 1px solid rgba(247, 223, 10, 0.712);
+  color: white;
+}
+
+.card-btn:hover {
+  background-color: palevioletred;
+  border: 1px solid palevioletred;
+  /* color: palegreen; */
+  transition: 0.3s;
+}
+
+.btn.card-btn:active {
+  background-color: palevioletred;
+  border: 1px solid palevioletred;
+}
+#submitBtn {
+  background-color: rgba(243, 87, 30, 0.589);
+  color: rgba(0, 0, 0, 0.514);
+}
+#submitBtn:hover {
+  background-color: orangered;
+  font-weight: bold;
+}
+.text-center {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.caloriesInfo {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+#cards-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.baseBlock {
+  margin-top: 30px;
+  cursor: pointer;
+  margin: 0px 0px 35px 0px;
+  padding: 0 0 15px 0px;
+  border-radius: 5px;
+  overflow: hidden;
+
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.baseBlock img {
+  /* width: 30px; */
+  width: 300px;
+  border-radius: 9px;
+}
+
+.baseBlock:hover {
+  transform: translate(0, -8px);
+  box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2);
+}
+.rc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  flex-direction: row;
+}
+.card-body h5 {
+  display: flex;
+  text-align: center;
+}
+.card-btn {
+  width: 100px;
+  height: 30px;
+  border-radius: 12px;
+}
+.row2 {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  flex-direction: row;
+}
+.recipes {
+  /* border: 1px solid red; */
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer {
+  margin-top: auto;
+  width: 100%;
+  padding: 5px;
+  background-color: rgba(128, 255, 0, 0.521);
+  color: black;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* loader */
+#loader {
+  height: 0;
+  width: 0;
+  padding: 15px;
+  border: 6px solid #ccc;
+  border-right-color: rgb(72, 73, 146);
+  border-radius: 22px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
